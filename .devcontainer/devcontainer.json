@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+	"name": "aws-glue-libs",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": ".."
+	},
+
+	"mounts": [
+		// AWS credentials
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/root/.aws,type=bind,consistency=cached,readonly",
+		// Jupyter notebooks
+		"source=${localWorkspaceFolder}/notebooks,target=/home/jupyter/jupyter_default_dir,type=bind,consistency=cached"
+	],
+
+	"settings": {
+		"jupyter.jupyterServerType": "remote",
+		"jupyter.allowUnauthorizedRemoteConnection": true,
+		// Avoid noise, but now required
+		"jupyter.alwaysTrustNotebooks": true
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ms-toolsai.jupyter"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		// Jupyter
+		8888,
+		// Spark UI
+		4040
+	],
+
+	"overrideCommand": false
+}
