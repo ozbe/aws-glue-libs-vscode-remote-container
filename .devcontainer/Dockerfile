@@ -1,5 +1,9 @@
 FROM amazon/aws-glue-libs:glue_libs_1.0.0_image_01
 
+# ms-python.python dependencies
+RUN pip3 --disable-pip-version-check --no-cache-dir install \
+    pylint flake8 autopep8 black yapf mypy pydocstyle pycodestyle bandit pipenv virtualenv
+
 # JSON data support 
 RUN wget https://s3-us-west-2.amazonaws.com/crawler-public/json/serde/json-serde.jar -P /home/spark-2.4.3-bin-spark-2.4.3-bin-hadoop2.8/jars
 
