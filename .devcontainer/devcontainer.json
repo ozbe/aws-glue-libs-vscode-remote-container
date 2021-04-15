@@ -30,7 +30,9 @@
 		"python.linting.mypyPath": "/usr/local/bin/mypy",
 		"python.linting.pycodestylePath": "/usr/local/bin/pycodestyle",
 		"python.linting.pydocstylePath": "/usr/local/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/bin/pylint"
+		"python.linting.pylintPath": "/usr/local/bin/pylint",
+
+		"aws.telemetry": false
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
