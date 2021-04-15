@@ -10,7 +10,9 @@
 		// AWS credentials
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.aws,target=/root/.aws,type=bind,consistency=cached,readonly",
 		// Jupyter notebooks
-		"source=${localWorkspaceFolder}/notebooks,target=/home/jupyter/jupyter_default_dir,type=bind,consistency=cached"
+		"source=${localWorkspaceFolder}/notebooks,target=/home/jupyter/jupyter_default_dir,type=bind,consistency=cached",
+		// Persist bash history between runs
+		"source=glue-local-bashhistory,target=/commandhistory,type=volume"
 	],
 
 	"settings": {

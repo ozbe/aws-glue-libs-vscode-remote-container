@@ -26,6 +26,11 @@ RUN echo 'export PYTHONPATH=/home/aws-glue-libs/PyGlue.zip:$PYTHONPATH' >> /root
 # Add Spark commands to $PATH
 RUN echo 'export PATH=$PATH:/home/spark-2.4.3-bin-spark-2.4.3-bin-hadoop2.8/bin/' >> /root/.bashrc
 
+# Persist bash history between runs
+# https://code.visualstudio.com/docs/remote/containers-advanced#_persist-bash-history-between-runs
+RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
+    && echo $SNIPPET >> "/root/.bashrc"
+
 # Copy notebooks
 COPY notebooks /root/notebooks/
 
